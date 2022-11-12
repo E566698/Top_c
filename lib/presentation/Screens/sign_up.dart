@@ -64,7 +64,13 @@ class SignUp extends StatelessWidget {
                             hintStyle: TextStyle(color: Colors.black,fontFamily: "WorkSansLight"),
                             filled: true,
                             fillColor: Colors.grey[20],
-                            hintText: 'Name'),
+                            hintText: 'Name',),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
                       ),
                       SizedBox(height: 20,),
                       TextFormField(
@@ -85,6 +91,12 @@ class SignUp extends StatelessWidget {
                             filled: true,
                             fillColor: Colors.grey[20],
                             hintText: 'E-mail'),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
                       ),
                       SizedBox(height: 20,),
                       TextFormField(
@@ -106,6 +118,12 @@ class SignUp extends StatelessWidget {
                             filled: true,
                             fillColor: Colors.grey[20],
                             hintText: 'Password'),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
                       ),
                       SizedBox(height: 10,),
                       Row(
@@ -126,19 +144,19 @@ class SignUp extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 25,),
-                      Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            TextButton(onPressed: (){},
-                                child:Text('Forget password?',
-                                  style: TextStyle(
-                                      color: defaultColor
-                                  ),
-                                ))
-                          ],
-                        ),
-                      ),
+                      // Center(
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.center,
+                      //     children: [
+                      //       TextButton(onPressed: (){},
+                      //           child:Text('Forget password?',
+                      //             style: TextStyle(
+                      //                 color: defaultColor
+                      //             ),
+                      //           ))
+                      //     ],
+                      //   ),
+                      // ),
                       Container(
                           width:double.infinity,
                           height: 60,
@@ -151,14 +169,16 @@ class SignUp extends StatelessWidget {
                           child: Center(
                             child: TextButton(
                               onPressed: (){
-                                 if(formkey.currentState!.validate()){
+
+                                 if(  formkey.currentState!.validate()){
+
                                    ChestsignUpCubit.get(context).userRegister(
                                        name: nameController.text,
                                        email: emailController.text,
                                        password: passController.text);
                                  }
                               },
-                              child:Text  ('Sign in',
+                              child:Text  ('Sign up',
                                 style: TextStyle(
                                     color: Colors.black
                                 ),
@@ -172,7 +192,7 @@ class SignUp extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text('Create an account',
+                          Text('Already have an account',
                             style: TextStyle(
                               fontSize: 15,
                               color: Colors.blueGrey,
@@ -182,7 +202,7 @@ class SignUp extends StatelessWidget {
                           TextButton(onPressed: (){
 
                           },
-                              child:Text('Sign up',
+                              child:Text('Sign in',
                                 style: TextStyle(
                                   color:defaultColor,
                                 ),

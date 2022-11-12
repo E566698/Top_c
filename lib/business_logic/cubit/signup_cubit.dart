@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,4 +22,14 @@ class ChestsignUpCubit extends Cubit<ChestSignUpStates>{
      emit(ChestSignErrorState(error.toString()));
    });
 }
+ void userCreate({
+   required String name,
+   required String email,
+   required String uId,
+}){
+    FirebaseFirestore.instance.collection('users')
+        .doc(uId)
+        .set({});
+ }
+
 }

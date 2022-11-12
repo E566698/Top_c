@@ -10,7 +10,9 @@ import 'package:project_grad/presentation/Screens/splash_screen.dart';
 
 main() async{
   // BlocObserver  = MyBlocObserver();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   // DioHelper.init();
   runApp( MaterialApp(
     debugShowCheckedModeBanner: false,
